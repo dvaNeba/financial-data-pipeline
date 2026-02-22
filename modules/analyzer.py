@@ -1,9 +1,9 @@
 def analyze(df):
     stats = {
-        "mean_price": df["Close"].mean(),
-        "volatility": df["Daily_Return"].std(),
-        "max_price": df["Close"].max(),
-        "min_price": df["Close"].min()
+        "mean_price": df["close"].mean(),
+        "volatility": df["daily_return"].std(),
+        "max_price": df["close"].max(),
+        "min_price": df["close"].min()
     }
 
     print("Basic Statistics:")

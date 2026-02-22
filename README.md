@@ -1,75 +1,105 @@
-# 📊 Financial Data Pipeline Project
+```markdown
+# Data Pipeline Project: Stock Prices
 
-Production-style data pipeline for financial market data analysis.
+## Overview
 
-## 🚀 Project Overview
+This project is a production-style data pipeline for financial data (stock prices).  
+It fetches data via API, cleans it, stores it in PostgreSQL, calculates analytics, and 
+visualizes results.  
 
-This project automatically:
-- Fetches stock data via API
-- Cleans and processes data
-- Performs statistical analysis
-- Generates visualizations
-- Saves processed datasets
+**Key Features:**
 
-Example asset: AAPL (Apple Inc.)
-
----
-
-## 🛠 Tech Stack
-
-- Python
-- Pandas
-- yfinance
-- Matplotlib / Seaborn
-- Logging
-- Modular architecture
+- Incremental data ingestion  
+- PostgreSQL storage  
+- Derived metrics calculation (MA20, MA50)  
+- Analytics (mean, volatility, min/max)  
+- Visualization with proper datetime axis  
 
 ---
 
-## 📂 Project Structure
+## Repository Structure
+
+```
 
 data_pipeline_project/
 │
-├─ main.py
-├─ config.py
+├─ README.md
 ├─ requirements.txt
+├─ config.py
+├─ main.py
 ├─ modules/
 │   ├─ data_fetcher.py
 │   ├─ data_cleaner.py
+│   ├─ database.py
+│   ├─ analytics.py
 │   ├─ analyzer.py
 │   └─ visualizer.py
-└─ data/
-    ├─ raw/
-    └─ processed/
+└─ notebooks/
+└─ exploration.ipynb
+
+````
+
+- `modules/` — modular, testable code  
+- `main.py` — orchestration of pipeline  
+- `config.py` — configuration and database settings  
+- `notebooks/` — exploration and prototype analysis  
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 1. Install dependencies:
 
+```bash
 pip install -r requirements.txt
+````
 
+2. Update `config.py` with PostgreSQL credentials and ticker.
 
-2. Run pipeline:
+3. Run the pipeline:
 
+```bash
 python main.py
+```
 
+The pipeline will:
+
+* Fetch new stock data from API
+* Clean and process data
+* Save raw data to PostgreSQL
+* Load full dataset
+* Calculate moving averages
+* Compute analytics (mean, volatility, min, max)
+* Plot Close price and MAs
 
 ---
 
-## 📈 Output
+## Visualization
 
-- Cleaned dataset in `/data/processed`
-- Price chart with moving averages
-- Basic statistical metrics
+* Blue line: Close price
+* Orange line: MA 20
+* Green line: MA 50
 
 ---
 
-## 🔮 Future Improvements
+## Dependencies
 
-- Database storage (PostgreSQL)
-- Docker containerization
-- CI/CD integration
-- Automated scheduling (cron/Airflow)
+* Python 3.9+
+* pandas
+* matplotlib
+* seaborn
+* SQLAlchemy
+* yfinance
+* psycopg2
+
+---
+
+## Notes
+
+* Derived metrics like MA are not stored in the database, calculated on-the-fly
+* Incremental ingestion avoids duplicate data
+* `analyzer.py` prints basic statistics for dataset insight
+
+```
+```
 
