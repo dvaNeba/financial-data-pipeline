@@ -1,19 +1,19 @@
 ```markdown
 # Data Pipeline Project: Stock Prices
 
-## Overview
+This repository demonstrates a production-style data pipeline for stock prices. It fetches financial data via API, cleans it, stores it in PostgreSQL, computes analytics (such as moving averages, volatility, min/max prices), and visualizes results. The project is modular, production-ready, and suitable for showcasing Data Analyst / Automation skills.
 
-This project is a production-style data pipeline for financial data (stock prices).  
-It fetches data via API, cleans it, stores it in PostgreSQL, calculates analytics, and 
-visualizes results.  
+---
 
-**Key Features:**
+## Features
 
-- Incremental data ingestion  
-- PostgreSQL storage  
-- Derived metrics calculation (MA20, MA50)  
-- Analytics (mean, volatility, min/max)  
-- Visualization with proper datetime axis  
+- Fetch historical stock/cryptocurrency data via API
+- Clean and preprocess raw data
+- Store processed data in PostgreSQL
+- Compute analytics: moving averages (MA20, MA50), volatility, returns, min/max prices
+- Visualize trends and indicators with Matplotlib/Seaborn
+- Modular Python code with configuration management
+- Interactive exploration via Jupyter Notebook
 
 ---
 
@@ -22,10 +22,10 @@ visualizes results.
 ```
 
 data_pipeline_project/
-│
-├─ README.md
-├─ requirements.txt
+├─ assets/
+│   └─ plot_example.png
 ├─ config.py
+├─ README.md
 ├─ main.py
 ├─ modules/
 │   ├─ data_fetcher.py
@@ -35,70 +35,76 @@ data_pipeline_project/
 │   ├─ analyzer.py
 │   └─ visualizer.py
 └─ notebooks/
-└─ exploration.ipynb
+    └─ exploration.ipynb
+└─ requirements.txt
 
 ````
-
-- `modules/` — modular, testable code  
-- `main.py` — orchestration of pipeline  
-- `config.py` — configuration and database settings  
-- `notebooks/` — exploration and prototype analysis  
 
 ---
 
-## How to Run
-
-1. Install dependencies:
+## Installation
 
 ```bash
+git clone https://github.com/<your-username>/<repo>.git
+cd data_pipeline_project
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ````
 
-2. Update `config.py` with PostgreSQL credentials and ticker.
+---
 
-3. Run the pipeline:
+## Configuration
+
+```python
+TICKER = "AAPL"
+DB_CONFIG = {
+    "host": "localhost",
+    "port": 5432,
+    "database": "stocks",
+    "user": "your_user",
+    "password": "your_password"
+}
+```
+
+---
+
+## Usage
 
 ```bash
 python main.py
 ```
 
-The pipeline will:
+---
 
-* Fetch new stock data from API
-* Clean and process data
-* Save raw data to PostgreSQL
-* Load full dataset
-* Calculate moving averages
-* Compute analytics (mean, volatility, min, max)
-* Plot Close price and MAs
+## Jupyter Notebook
+
+Open `notebooks/exploration.ipynb` to interactively explore the full dataset, compute 
+analytics, and visualize trends.
 
 ---
 
-## Visualization
-
-* Blue line: Close price
-* Orange line: MA 20
-* Green line: MA 50
-
----
-
-## Dependencies
+## Technologies
 
 * Python 3.9+
-* pandas
-* matplotlib
-* seaborn
-* SQLAlchemy
-* yfinance
-* psycopg2
+* Pandas, NumPy
+* Matplotlib, Seaborn
+* PostgreSQL, SQLAlchemy, psycopg2
+* yfinance API
 
 ---
 
-## Notes
+## Example Visualization
 
-* Derived metrics like MA are not stored in the database, calculated on-the-fly
-* Incremental ingestion avoids duplicate data
-* `analyzer.py` prints basic statistics for dataset insight
+Here is an example of the Close price with moving averages:
+
+![Example Plot](assets/plot_example.png)
+
+---
+
+## License
+
+MIT License
 
 ```
 ```
