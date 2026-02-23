@@ -1,5 +1,7 @@
-from sqlalchemy import create_engine, text
 import pandas as pd
+import logging
+
+from sqlalchemy import create_engine, text
 from datetime import timedelta
 
 
@@ -66,7 +68,7 @@ def save_to_postgres(df, db_config, ticker):
     with engine.begin() as conn:
         conn.execute(insert_query, df.to_dict(orient="records"))
 
-    print("Incremental insert completed.")
+    logging.info("Incremental insert completed.")
 
 
 def load_full_data(db_config, ticker):

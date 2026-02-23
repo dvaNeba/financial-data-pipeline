@@ -1,5 +1,5 @@
-TICKER = "AAPL"
-START_DATE = "2025-01-01"
+DEFAULT_TICKER = "AAPL"
+DEFAULT_START_DATE = "2025-01-01"
 
 DB_CONFIG = {
     "host": "localhost",

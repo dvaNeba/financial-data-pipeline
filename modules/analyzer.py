@@ -15,10 +15,10 @@ def analyze(df: pd.DataFrame) -> dict:
     volatility = round(df["daily_return"].std(), 5)
 
     print("Basic Statistics:")
-    print(f"mean_price: {mean_price:.{decimals}f}")
-    print(f"volatility: {volatility:.5f}")
-    print(f"max_price: {max_price:.{decimals}f}")
-    print(f"min_price: {min_price:.{decimals}f}")
+    print(f"Mean_price: {mean_price:.{decimals}f}")
+    print(f"Volatility: {volatility:.5f}")
+    print(f"Max_price: {max_price:.{decimals}f}")
+    print(f"Min_price: {min_price:.{decimals}f}")
 
     return {
         "mean_price": mean_price,
