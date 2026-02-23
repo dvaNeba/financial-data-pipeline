@@ -1,5 +1,6 @@
 *.pyc
 .env
+clean_env/
 data/
 
 # VS Code settings
